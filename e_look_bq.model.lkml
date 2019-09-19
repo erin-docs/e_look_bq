@@ -35,6 +35,16 @@ explore: order_items {
   }
 }
 
+explore: orders_tested {
+  join: users {
+    #_each
+    type: left_outer
+    sql_on: ${orders_tested.user_id}.user_id} = ${users.id} ;;
+    relationship: many_to_one
+  }
+}
+
+
 explore: orders {
   join: users {
     #_each

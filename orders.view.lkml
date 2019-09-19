@@ -1,3 +1,21 @@
+
+test: order_id_is_unique_unique {
+  explore_source: orders_tested {
+    column: id {}
+    column: count {}
+    sort: {
+      field: count
+      desc: yes
+    }
+    limit: 1
+  }
+  assert: order_id_is_unique {
+    expression: ${orders_tested.count} = 1 ;;
+  }
+}
+
+
+
 view: orders {
   sql_table_name: looker_test.orders ;;
 
