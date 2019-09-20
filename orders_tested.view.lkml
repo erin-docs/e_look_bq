@@ -14,6 +14,24 @@ test: order_id_is_unique {
   }
 }
 
+
+test: status_is_valid {
+  explore_source: orders_tested {
+    column: status {
+      field: orders_tested.status
+    }
+    sort: {
+      field: status
+      desc: yes     # Sorting of NULL can vary based on database
+    }
+    limit: 1
+  }
+  assert: status_is_not_null {
+    expression: NOT is_null(${orders_tested.status}) ;;
+  }
+}
+
+
 test: status_is_not_null {
   explore_source: orders_tested {
     column: status {}
@@ -24,7 +42,7 @@ test: status_is_not_null {
     limit: 1
   }
   assert: status_is_not_null {
-    expression: NOT is_null(${orders_tested.status}) ;;
+    expression: NOT is_null(${orders_tested.statis}) ;;
   }
 }
 

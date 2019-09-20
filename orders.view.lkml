@@ -1,7 +1,7 @@
 
-test: order_id_is_unique_unique {
+test: user_id_is_unique {
   explore_source: orders_tested {
-    column: id {}
+    column: user_id {}
     column: count {}
     sort: {
       field: count
@@ -9,13 +9,10 @@ test: order_id_is_unique_unique {
     }
     limit: 1
   }
-  assert: order_id_is_unique {
-    expression: ${orders_tested.count} = 1 ;;
-  }
+  assert: user_id_is_unique {
+    expression: NOT is_null(${orders_tested.user_id}) ;;
+    }
 }
-
-
-
 
 view: orders {
   sql_table_name: looker_test.orders ;;
