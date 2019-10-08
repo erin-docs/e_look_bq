@@ -1,20 +1,20 @@
 
 # TEST THAT WILL FAIL BECAUSE OF LOGIC
 #
-# test: order_id_is_unique {
-#   explore_source: orders_tested {
-#     column: id {}
-#     column: count {}
-#     sort: {
-#       field: count
-#       desc: yes
-#     }
-#     limit: 1
-#   }
-#   assert: order_id_is_unique {
-#     expression: ${orders_tested.count} = 1 ;;
-#   }
-# }
+test: order_id_is_unique {
+   explore_source: orders_tested {
+     column: id {}
+     column: count {}
+     sort: {
+       field: count
+       desc: yes
+     }
+     limit: 1
+   }
+   assert: order_id_is_unique {
+     expression: ${orders_tested.count} = 1 ;;
+   }
+ }
 
 
 test: status_is_valid {
@@ -34,20 +34,20 @@ test: status_is_valid {
 }
 
 # TEST THAT WILL FAIL BECAUSE OF LOGIC AND LOOKML OF TEST ITSELF
-#
-# test: status_is_not_null {
-#   explore_source: orders_tested {
-#     column: status {}
-#     sort: {
-#       field: status
-#       desc: yes     # Sorting of NULL can vary based on database
-#     }
-#     limit: 1
-#   }
-#   assert: status_is_not_null {
-#     expression: NOT is_null(${orders_tested.statis}) ;;
-#   }
-# }
+
+ test: status_is_not_null {
+   explore_source: orders_tested {
+     column: status {}
+     sort: {
+       field: status
+       desc: yes     # Sorting of NULL can vary based on database
+     }
+     limit: 1
+   }
+   assert: status_is_not_null {
+     expression: NOT is_null(${orders_tested.statis}) ;;
+   }
+ }
 
 view: orders_tested  {
   # sql_table_name: looker_test.orders ;;

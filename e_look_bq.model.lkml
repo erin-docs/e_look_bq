@@ -2,6 +2,8 @@ connection: "thelook_bigquery"
 
 # include all the views
 include: "*.view"
+ include: "data_tests.lkml"
+
 
 datagroup: e_look_bq_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;

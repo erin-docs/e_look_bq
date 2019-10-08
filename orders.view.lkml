@@ -1,3 +1,5 @@
+include: "data_tests.lkml"
+
 
 test: user_id_is_unique {
   explore_source: orders_tested {
