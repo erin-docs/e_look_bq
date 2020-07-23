@@ -13,7 +13,7 @@ persist_with: e_look_bq_default_datagroup
 # NOTE: please see https://looker.com/docs/r/sql/bigquery?version=5.24
 # NOTE: for BigQuery specific considerations
 
-explore: all_types {}
+# explore: all_types {}
 
 explore: another_test_table {}
 

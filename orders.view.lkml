@@ -55,7 +55,7 @@ view: orders {
 
   measure: count {
     type: count
-    approximate_threshold: 100000
+#     approximate_threshold: 100000
     drill_fields: [id, users.name, users.id, order_items.count]
   }
 }
