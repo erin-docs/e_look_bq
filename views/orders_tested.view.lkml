@@ -1,4 +1,7 @@
-# no
+
+include: "/views/*.view.lkml"
+include: "/explores/*"
+
 # TEST THAT WILL FAIL BECAUSE OF LOGIC
 #
 test: order_id_is_unique {
@@ -17,7 +20,7 @@ test: order_id_is_unique {
  }
 
 
-test: status_is_valid {
+test: status_not_valid {
   explore_source: orders_tested {
     column: status {
       field: orders_tested.status
@@ -32,6 +35,8 @@ test: status_is_valid {
     expression: NOT is_null(${orders_tested.status}) ;;
   }
 }
+
+
 
 # TEST THAT WILL FAIL BECAUSE OF LOGIC AND LOOKML OF TEST ITSELF
 

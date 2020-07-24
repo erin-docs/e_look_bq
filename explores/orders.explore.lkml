@@ -1,6 +1,6 @@
-include: "/orders.view"
-include: "/users.view"
-include: "/data_tests.lkml"
+include: "/views/orders.view"
+include: "/views/users.view"
+include: "/data_tests/data_tests.lkml"
 
 explore: orders {
 

@@ -1,8 +1,7 @@
-connection: "thelook_bigquery"
+connection: "thelook_bigquery2"
 
-# include all the views
-include: "*.view"
- include: "data_tests.lkml"
+include: "/views/*.view"
+include: "/data_tests/data_tests.lkml"
 
 
 datagroup: e_look_bq_default_datagroup {
@@ -47,13 +46,13 @@ explore: orders_tested {
 }
 
 
-explore: orders {
-  join: users {
-    #_each
-    type: left_outer
-    sql_on: ${orders.user_id} = ${users.id} ;;
-    relationship: many_to_one
-  }
-}
+# explore: orders {
+#   join: users {
+#     #_each
+#     type: left_outer
+#     sql_on: ${orders.user_id} = ${users.id} ;;
+#     relationship: many_to_one
+#   }
+# }
 
 explore: users {}
