@@ -3,6 +3,8 @@ connection: "thelook_bigquery2"
 include: "/views/*.view"
 include: "/data_tests/data_tests.lkml"
 
+ bigquery_datetime_as_timestamp: no
+
 
 datagroup: e_look_bq_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;

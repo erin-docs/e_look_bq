@@ -1,5 +1,4 @@
 view: order_items {
-  sql_table_name: looker_test.order_items ;;
 
   dimension: id {
     primary_key: yes
@@ -28,4 +27,21 @@ view: order_items {
     #approximate_threshold: 100000
     drill_fields: [id, orders.id]
   }
+
+
+  dimension: amount_dimension {
+    sql: (${TABLE}.amount) ;;
+  }
+
+  measure: average_amount {
+    type: average
+    sql: ${TABLE}.amount ;;
+  }
+
+  measure: average_amount_from_dimension {
+    type: average
+    sql: ${amount_dimension} ;;
+  }
+
+
 }
