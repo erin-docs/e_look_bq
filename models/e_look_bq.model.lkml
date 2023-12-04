@@ -3,11 +3,9 @@ connection: "thelook_bigquery2"
 include: "/views/*.view"
 include: "/data_tests/data_tests.lkml"
 
- bigquery_datetime_as_timestamp: no
-
 
 datagroup: e_look_bq_default_datagroup {
-  # sql_trigger: SELECT MAX(id) FROM etl_log;;
+  sql_trigger: SELECT MAX(id) FROM etl_log;;
   max_cache_age: "1 hour"
 }
 
@@ -58,3 +56,20 @@ explore: orders_tested {
 # }
 
 explore: users {}
+
+
+
+
+# agg_table
+explore: +order_items {
+  aggregate_table: rollup__orders_created_date {
+    query: {
+      dimensions: [orders.created_date]
+      measures: [average_amount]
+    }
+
+    materialization: {
+      datagroup_trigger: e_look_bq_default_datagroup
+    }
+  }
+}
